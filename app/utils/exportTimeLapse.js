@@ -1,4 +1,5 @@
-const { dialog } = require('electron');
+/* eslint-disable promise/always-return */
+const { dialog, app } = require('electron');
 const GIFEncoder = require('gifencoder');
 const Jimp = require('jimp');
 const sizeOf = require('image-size');
@@ -48,22 +49,20 @@ const exportGif = (filePaths, destinationPath, complettionChange, options) => {
   });
 };
 
-const exportMp4 = (filePaths, destinationPath) =>
-  new Promise(resolve => {
-    const converter = ffmpeg({
-      logger: { debug: console.log, error: console.log }
-    })
-      .fps(1)
-      .on('stderr', stderrLine => {
-        console.log(`Stderr output: ${stderrLine}`);
+const exportMp4 = (filePaths, destinationPath, complettionChange) =>
+  new Promise((resolve, reject) => {
+    const temp = `${app.getPath('userData')}/temp.gif`;
+    exportGif(filePaths, temp, complettionChange)
+      .then(() => {
+        ffmpeg(temp)
+          .output(destinationPath)
+          .on('end', () => {
+            console.log('done');
+            return resolve();
+          })
+          .run();
       })
-      .on('end', () => resolve());
-    filePaths
-      .reduce((ff, image) => {
-        console.log(image);
-        return ff.input(image).inputFPS(1);
-      }, converter)
-      .mergeToFile(destinationPath, `${__dirname}/temp`);
+      .catch(err => reject(err));
   });
 
 const exportTypes = {
