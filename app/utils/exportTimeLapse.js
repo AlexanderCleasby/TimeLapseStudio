@@ -29,7 +29,7 @@ const exportGif = (filePaths, destinationPath, complettionChange, options) => {
           console.log(filePaths[i]);
           image.resize(dimm.width * scale, dimm.height * scale);
           encoder.addFrame(image.bitmap.data);
-          complettionChange(i / filePaths.length);
+          complettionChange((i + 1) / filePaths.length);
           i += 1;
           if (i === filePaths.length) {
             encoder.finish();
@@ -74,7 +74,6 @@ const exportTimeLapse = (arg, complettionChange) =>
   new Promise((resolve, reject) => {
     dialog.showSaveDialog({}, DesPath => {
       const type = DesPath.split('.').slice(-1);
-      complettionChange(ffmpegPath);
       exportTypes[type](arg.imagePaths, DesPath, complettionChange)
         .then(() => resolve(DesPath))
         .catch(err => reject(err));
