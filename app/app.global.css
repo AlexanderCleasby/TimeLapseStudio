@@ -9,11 +9,6 @@ body {
   color: white;
   height: 100vh;
   background-color: #232c39;
-  background-image: linear-gradient(
-    45deg,
-    rgba(0, 255, 221, 0.781) 10%,
-    rgb(194, 194, 194)
-  );
   font-family: Arial, Helvetica, Helvetica Neue, serif;
   overflow-y: hidden;
 }
@@ -47,16 +42,17 @@ a:hover {
 }
 
 .slide {
-  height: 280px;
+  height: 50px;
   margin: 10px;
 }
 
 .slider {
   width: 80%;
-  height: 300px;
+  height: 80px;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
   background-color: grey;
   margin: 0 10%;
+  scrollbar-width: 10px;
 }
