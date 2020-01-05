@@ -1,9 +1,7 @@
 // @flow
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { ipcRenderer } from 'electron';
 import LoadingBar from './LoadingBar';
-import routes from '../constants/routes.json';
 import styles from './Home.css';
 import Slides from './Slides';
 
@@ -43,7 +41,6 @@ export default class Home extends Component<Props> {
         >
           Export
         </button>
-        <Link to={routes.COUNTER}>to Counter</Link>
         <LoadingBar />
       </div>
     );
