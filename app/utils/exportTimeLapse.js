@@ -5,7 +5,7 @@ const Jimp = require('jimp');
 const sizeOf = require('image-size');
 const fs = require('fs');
 const ffmpeg = require('fluent-ffmpeg');
-const ffmpegPath = require('ffmpeg-static-electron').path.replace(
+const ffmpegPath = require('ffmpeg-static').replace(
   'app.asar',
   'app.asar.unpacked'
 );

@@ -1,6 +1,6 @@
 {
   "name": "timelapse-studio",
-  "productName": "ElectronReact",
+  "productName": "TimeLapseStudio",
   "version": "0.18.0",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "scripts": {
@@ -56,11 +56,11 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
+    "productName": "TimeLapseStudio",
     "asarUnpack":[
       "**/app/node_modules/",
-      "node_modules/ffmpeg-static-electron/bin/${os}/${arch}/ffmpeg",
-      "node_modules/ffmpeg-static-electron/index.js",
+      "node_modules/ffmpeg-static/bin/${os}/${arch}/ffmpeg",
+      "node_modules/ffmpeg-static/index.js",
       "node_modules/ffmpeg-static/package.json"
     ],
     "appId": "org.develar.ElectronReact",
@@ -70,10 +70,7 @@
       "app.html",
       "main.prod.js",
       "main.prod.js.map",
-      "package.json",
-      "node_modules/ffmpeg-static-electron/bin/${os}/${arch}/ffmpeg",
-      "node_modules/ffmpeg-static-electron/index.js",
-      "node_modules/ffmpeg-static/package.json"
+      "package.json"
       ],
     "dmg": {
       "contents": [

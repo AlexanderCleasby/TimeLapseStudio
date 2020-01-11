@@ -440,11 +440,6 @@ exif-parser@^0.1.12:
   resolved "https://registry.yarnpkg.com/exif-parser/-/exif-parser-0.1.12.tgz#58a9d2d72c02c1f6f02a0ef4a9166272b7760922"
   integrity sha1-WKnS1ywCwfbwKg70qRZicrd2CSI=
 
-ffmpeg-static-electron@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/ffmpeg-static-electron/-/ffmpeg-static-electron-2.0.1.tgz#edaa332d2a7109262211533aa0996eda793db2f7"
-  integrity sha512-tLOZJu2PJbDT7oMPhaAmmTZEZZms9R9D2FyhqsBrGlVhfqMi/ipuwNdogwk0+QEnDKaPhXwIgdnkd5Gn5tDXjw==
-
 ffmpeg-static@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/ffmpeg-static/-/ffmpeg-static-3.0.0.tgz#e5d259023682f118ea370eab937385c8da4c664f"
