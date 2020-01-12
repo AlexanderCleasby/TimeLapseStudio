@@ -50,7 +50,7 @@ main.js.map
 .idea
 npm-debug.log.*
 testimages
-resources
+resources/icons
 .vscode
 *.jpg
 *.png
