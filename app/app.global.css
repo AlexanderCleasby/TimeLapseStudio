@@ -48,13 +48,12 @@ a:hover {
 }
 
 .slider {
-  width: 80%;
+  width: 100%;
   height: 80px;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
   background-color: grey;
-  margin: 0 10%;
   scrollbar-width: 10px;
   display: flex;
   align-items: flex-start;
