@@ -72,12 +72,24 @@ const exportTypes = {
 
 const exportTimeLapse = (arg, complettionChange) =>
   new Promise((resolve, reject) => {
-    dialog.showSaveDialog({}, DesPath => {
-      const type = DesPath.split('.').slice(-1);
-      exportTypes[type](arg.imagePaths, DesPath, complettionChange, arg.options)
-        .then(() => resolve(DesPath))
-        .catch(err => reject(err));
-    });
+    dialog.showSaveDialog(
+      {
+        filters: {
+          extensions: ['mp4', 'gif']
+        }
+      },
+      DesPath => {
+        const type = DesPath.split('.').slice(-1);
+        exportTypes[type](
+          arg.imagePaths,
+          DesPath,
+          complettionChange,
+          arg.options
+        )
+          .then(() => resolve(DesPath))
+          .catch(err => reject(err));
+      }
+    );
   });
 
 module.exports = exportTimeLapse;
