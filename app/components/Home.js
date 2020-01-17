@@ -4,10 +4,14 @@ import { ipcRenderer } from 'electron';
 import LoadingBar from './LoadingBar';
 import styles from './Home.css';
 import Slides from './Slides';
+import MenuPanel from './menuPanel';
 
 type Props = {
   addImage: string => void,
-  images: Array<{ id: string, path: string }>
+  images: Array<{ id: string, path: string }>,
+  settings: { scale: number, speed: number },
+  changeSpeed: number => void,
+  changeScale: number => void
 };
 
 export default class Home extends Component<Props> {
@@ -24,9 +28,16 @@ export default class Home extends Component<Props> {
   }
 
   render() {
-    const { images } = this.props;
+    const { images, changeSpeed, changeScale, settings } = this.props;
+    const { speed, scale } = settings;
     return (
       <div className={styles.container} data-tid="container">
+        <MenuPanel
+          speed={speed}
+          scale={scale}
+          changeScale={changeScale}
+          changeSpeed={changeSpeed}
+        />
         <Slides images={images} />
         <button type="submit" onClick={() => ipcRenderer.send('open-dialog')}>
           Select Photos
@@ -35,7 +46,8 @@ export default class Home extends Component<Props> {
           type="button"
           onClick={() =>
             ipcRenderer.send('export', {
-              imagePaths: images.map(image => image.path)
+              imagePaths: images.map(image => image.path),
+              options: { speed, scale }
             })
           }
         >
