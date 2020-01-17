@@ -49,10 +49,10 @@ const exportGif = (filePaths, destinationPath, complettionChange, options) => {
   });
 };
 
-const exportMp4 = (filePaths, destinationPath, complettionChange) =>
+const exportMp4 = (filePaths, destinationPath, complettionChange, options) =>
   new Promise((resolve, reject) => {
     const temp = `${app.getPath('userData')}/temp.gif`;
-    exportGif(filePaths, temp, complettionChange)
+    exportGif(filePaths, temp, complettionChange, options)
       .then(() => {
         ffmpeg(temp)
           .output(destinationPath)
@@ -74,7 +74,7 @@ const exportTimeLapse = (arg, complettionChange) =>
   new Promise((resolve, reject) => {
     dialog.showSaveDialog({}, DesPath => {
       const type = DesPath.split('.').slice(-1);
-      exportTypes[type](arg.imagePaths, DesPath, complettionChange)
+      exportTypes[type](arg.imagePaths, DesPath, complettionChange, arg.options)
         .then(() => resolve(DesPath))
         .catch(err => reject(err));
     });
