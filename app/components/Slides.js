@@ -7,7 +7,9 @@ import React, { Component } from 'react';
 import './Slider.css';
 
 type Props = {
-  images: Array<{ id: string, path: string }>
+  images: Array<{ id: string, path: string }>,
+  selectedImage: { id: string, path: string },
+  selectImage: () => void
 };
 
 type State = {
@@ -15,26 +17,19 @@ type State = {
 };
 
 class Slides extends Component<Props, State> {
-  constructor() {
-    super();
-    this.state = { selectedIndex: 0 };
-  }
-
-  selectedChange = (i: number) => {
-    this.setState({ selectedIndex: i });
-  };
-
   render() {
-    const { images }: Props = this.props;
-    const { selectedIndex } = this.state;
+    const { images, selectImage, selectedImage }: Props = this.props;
+    console.log(selectedImage);
     return (
       <div className="slider">
         {images.map((image, i) => (
           <img
             src={image.path}
             alt={`slide ${i}`}
-            className={`slide ${selectedIndex ? 'selected' : ''}`}
-            onClick={() => this.selectedChange(i)}
+            className={`${
+              selectedImage.id === image.id ? 'selected' : ''
+            } slide`}
+            onClick={() => selectImage(image)}
           />
         ))}
       </div>

@@ -4,6 +4,7 @@ import { ipcRenderer } from 'electron';
 import LoadingBar from './LoadingBar';
 import styles from './Home.css';
 import Slides from './Slides';
+import ImageView from './ImageView';
 import MenuPanel from './menuPanel';
 
 type Props = {
@@ -14,11 +15,18 @@ type Props = {
   changeScale: number => void
 };
 
-export default class Home extends Component<Props> {
+type State = {
+  selectedImage: { id: string, path: string }
+};
+
+export default class Home extends Component<Props, State> {
   props: Props;
 
   constructor({ addImage }: Props) {
     super();
+    this.state = {
+      selectedImage: { id: '', path: '' }
+    };
     ipcRenderer.on('imagesSelected', (e, args) => {
       console.log(args);
       addImage(args);
@@ -27,18 +35,27 @@ export default class Home extends Component<Props> {
     ipcRenderer.on('complettionChange', (e, arg) => console.log(arg));
   }
 
+  selectImage = image => this.setState({ selectedImage: image });
+
   render() {
     const { images, changeSpeed, changeScale, settings } = this.props;
     const { speed, scale } = settings;
+    const { selectedImage } = this.state;
     return (
       <div className={styles.container} data-tid="container">
+        <ImageView selectedImage={selectedImage} />
         <MenuPanel
           speed={speed}
           scale={scale}
           changeScale={changeScale}
           changeSpeed={changeSpeed}
         />
-        <Slides images={images} />
+        <Slides
+          imageId={selectedImage.id}
+          images={images}
+          selectImage={this.selectImage}
+          selectedImage={selectedImage}
+        />
         <button type="submit" onClick={() => ipcRenderer.send('open-dialog')}>
           Select Photos
         </button>

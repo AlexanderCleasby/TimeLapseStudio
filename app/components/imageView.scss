@@ -1,0 +1,12 @@
+.ImageView {
+  background-color: rgb(0, 0, 0);
+  height: 400px;
+  width: 80%;
+  float: left;
+  img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
