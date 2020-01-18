@@ -47,9 +47,15 @@ a:hover {
   margin: 10px;
 }
 
+.selected {
+  padding: 10px;
+  margin: 0;
+  background-color: rgb(255, 207, 96);
+}
+
 .slider {
   width: 100%;
-  height: 80px;
+  height: 90px;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -57,4 +63,19 @@ a:hover {
   scrollbar-width: 10px;
   display: flex;
   align-items: flex-start;
+}
+
+::-webkit-scrollbar {
+  height: 20px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
