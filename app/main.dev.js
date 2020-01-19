@@ -75,7 +75,7 @@ app.on('ready', async () => {
     webPreferences: {
       nodeIntegration: true
     },
-    frame: true
+    frame: false
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);
