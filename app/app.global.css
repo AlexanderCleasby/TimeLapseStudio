@@ -8,10 +8,11 @@ body {
   position: relative;
   color: white;
   height: 100vh;
-  background-color: #232c39;
+  background-color: #0b0c10;
   font-family: Arial, Helvetica, Helvetica Neue, serif;
   overflow-y: hidden;
   overflow-x: hidden;
+  margin: 0;
 }
 
 h2 {
@@ -59,7 +60,7 @@ a:hover {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  background-color: grey;
+  background-color: #1f2833;
   scrollbar-width: 10px;
   display: flex;
   align-items: flex-start;
@@ -68,14 +69,8 @@ a:hover {
 ::-webkit-scrollbar {
   height: 20px;
 }
-::-webkit-scrollbar-track {
-  box-shadow: rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-}
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  background-color: #66fcf1;
 }

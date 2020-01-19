@@ -1,10 +1,12 @@
+@import '../variables.scss';
+
 .menu {
   input[type='range'] {
     -webkit-appearance: none;
     appearance: none;
     width: 90%;
     height: 20px;
-    background: rgb(85, 85, 85);
+    background: $background2;
     cursor: pointer;
     border-radius: 20px;
     &:focus {
@@ -17,11 +19,11 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: rgb(71, 141, 255);
+    background: #66fcf1;
     cursor: pointer;
   }
 
-  background-color: rgb(0, 0, 0);
+  background-color: $background1;
   width: 20%;
   height: 400px;
   float: right;
