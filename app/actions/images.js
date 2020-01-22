@@ -1,7 +1,7 @@
 // @flow
 
-export const ADD_IMAGE = 'INCREMENT_COUNTER';
-export const DELETE_IMAGE = 'DECREMENT_COUNTER';
+export const ADD_IMAGE = 'ADD_IMAGE';
+export const DELETE_IMAGE = 'DELETE_IMAGE';
 
 export function addImage(images: Array<string>) {
   return {
@@ -10,8 +10,9 @@ export function addImage(images: Array<string>) {
   };
 }
 
-export function deleteImage() {
+export function deleteImage(id: string) {
   return {
-    type: DELETE_IMAGE
+    type: DELETE_IMAGE,
+    id
   };
 }

@@ -3,10 +3,20 @@
   height: 400px;
   width: 80%;
   float: left;
+  position: relative;
   img {
     width: auto;
     height: auto;
     max-width: 100%;
     max-height: 100%;
+  }
+  button {
+    z-index: 2;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    background-color: tomato;
+    border-radius: 50%;
+    border: none;
   }
 }

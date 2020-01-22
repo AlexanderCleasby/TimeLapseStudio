@@ -6,17 +6,19 @@ import styles from './Home.css';
 import Slides from './Slides';
 import ImageView from './ImageView';
 import MenuPanel from './menuPanel';
+import { ImageType } from '../reducers/types';
 
 type Props = {
   addImage: string => void,
-  images: Array<{ id: string, path: string }>,
+  deleteImage: string => void,
+  images: Array<ImageType>,
   settings: { scale: number, speed: number },
   changeSpeed: number => void,
   changeScale: number => void
 };
 
 type State = {
-  selectedImage: { id: string, path: string }
+  selectedImage: ImageType
 };
 
 export default class Home extends Component<Props, State> {
@@ -35,15 +37,21 @@ export default class Home extends Component<Props, State> {
     ipcRenderer.on('complettionChange', (e, arg) => console.log(arg));
   }
 
-  selectImage = image => this.setState({ selectedImage: image });
+  selectImage = (image: ImageType) => this.setState({ selectedImage: image });
 
   render() {
-    const { images, changeSpeed, changeScale, settings } = this.props;
+    const {
+      images,
+      changeSpeed,
+      changeScale,
+      settings,
+      deleteImage
+    } = this.props;
     const { speed, scale } = settings;
     const { selectedImage } = this.state;
     return (
       <div className={styles.container} data-tid="container">
-        <ImageView selectedImage={selectedImage} />
+        <ImageView selectedImage={selectedImage} deleteImage={deleteImage} />
         <MenuPanel
           speed={speed}
           scale={scale}

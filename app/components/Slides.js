@@ -5,11 +5,12 @@
 
 import React, { Component } from 'react';
 import './Slider.css';
+import { ImageType } from '../reducers/types';
 
 type Props = {
-  images: Array<{ id: string, path: string }>,
-  selectedImage: { id: string, path: string },
-  selectImage: () => void
+  images: Array<ImageType>,
+  selectedImage: ImageType,
+  selectImage: ImageType => void
 };
 
 type State = {

@@ -8,6 +8,11 @@ export type Action = {
   +type: string
 };
 
+export type ImageType = {
+  path: string,
+  id: string
+};
+
 export type GetState = () => counterStateType;
 
 export type Dispatch = ReduxDispatch<Action>;
