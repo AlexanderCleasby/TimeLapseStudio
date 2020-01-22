@@ -59,7 +59,6 @@ export default class Home extends Component<Props, State> {
           changeSpeed={changeSpeed}
         />
         <Slides
-          imageId={selectedImage.id}
           images={images}
           selectImage={this.selectImage}
           selectedImage={selectedImage}
