@@ -9,11 +9,11 @@ import { ImageType } from '../reducers/types';
 type Props = {
   images: Array<ImageType>,
   selectedImage: ImageType,
-  selectImage: ImageType => void
+  changeSelected: ImageType => void
 };
 
 function Slides(props: Props) {
-  const { images, selectImage, selectedImage } = props;
+  const { images, changeSelected, selectedImage } = props;
   console.log(selectedImage);
   return (
     <div className="slider">
@@ -22,7 +22,7 @@ function Slides(props: Props) {
           src={image.path}
           alt={`slide ${i}`}
           className={`${selectedImage.id === image.id ? 'selected' : ''} slide`}
-          onClick={() => selectImage(image)}
+          onClick={() => changeSelected(i)}
         />
       ))}
     </div>

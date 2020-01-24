@@ -6,7 +6,8 @@ import * as SettingsActions from '../actions/settings';
 
 function mapStateToProps(state) {
   return {
-    images: state.images,
+    images: state.images.all,
+    selectedImage: state.images.selected,
     settings: state.settings
   };
 }

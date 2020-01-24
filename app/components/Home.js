@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { ipcRenderer } from 'electron';
 import LoadingBar from './LoadingBar';
-import styles from './Home.css';
+import Styles from './Home.scss';
 import Slides from './Slides';
 import ImageView from './ImageView';
 import MenuPanel from './menuPanel';
@@ -14,21 +14,16 @@ type Props = {
   images: Array<ImageType>,
   settings: { scale: number, speed: number },
   changeSpeed: number => void,
-  changeScale: number => void
+  changeScale: number => void,
+  selectedImage: ImageType,
+  changeSelected: number => void
 };
 
-type State = {
-  selectedImage: ImageType
-};
-
-export default class Home extends Component<Props, State> {
+export default class Home extends Component<Props> {
   props: Props;
 
   constructor({ addImage }: Props) {
     super();
-    this.state = {
-      selectedImage: { id: '', path: '' }
-    };
     ipcRenderer.on('imagesSelected', (e, args) => {
       console.log(args);
       addImage(args);
@@ -37,20 +32,19 @@ export default class Home extends Component<Props, State> {
     ipcRenderer.on('complettionChange', (e, arg) => console.log(arg));
   }
 
-  selectImage = (image: ImageType) => this.setState({ selectedImage: image });
-
   render() {
     const {
       images,
       changeSpeed,
       changeScale,
       settings,
-      deleteImage
+      deleteImage,
+      selectedImage,
+      changeSelected
     } = this.props;
     const { speed, scale } = settings;
-    const { selectedImage } = this.state;
     return (
-      <div className={styles.container} data-tid="container">
+      <div className={Styles.container} data-tid="container">
         <ImageView selectedImage={selectedImage} deleteImage={deleteImage} />
         <MenuPanel
           speed={speed}
@@ -60,14 +54,19 @@ export default class Home extends Component<Props, State> {
         />
         <Slides
           images={images}
-          selectImage={this.selectImage}
+          changeSelected={changeSelected}
           selectedImage={selectedImage}
         />
-        <button type="submit" onClick={() => ipcRenderer.send('open-dialog')}>
+        <button
+          type="submit"
+          className={Styles.controlButton}
+          onClick={() => ipcRenderer.send('open-dialog')}
+        >
           Select Photos
         </button>
         <button
           type="button"
+          className={Styles.controlButton}
           onClick={() =>
             ipcRenderer.send('export', {
               imagePaths: images.map(image => image.path),
@@ -75,7 +74,7 @@ export default class Home extends Component<Props, State> {
             })
           }
         >
-          Export
+          Export Time Lapse
         </button>
         <LoadingBar />
       </div>
