@@ -43,6 +43,10 @@ a:hover {
   cursor: pointer;
 }
 
+button:focus {
+  outline: 0;
+}
+
 .slide {
   height: 50px;
   margin: 10px;
