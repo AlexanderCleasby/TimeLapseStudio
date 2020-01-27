@@ -46,12 +46,11 @@ dist
 dll
 main.js
 main.js.map
-
+internals
 .idea
 npm-debug.log.*
 testimages
-resources/icons
 .vscode
 *.jpg
-*.png
+.png
 *.gif
